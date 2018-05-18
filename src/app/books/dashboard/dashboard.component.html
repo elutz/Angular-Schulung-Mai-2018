@@ -1,0 +1,13 @@
+<br-create-book (create)="addBook($event)"></br-create-book>
+
+<br-book
+  *ngFor="let b of books; odd as o; even as e"
+  [book]="b"
+  [isOdd]="o"
+  (rate)="updateSortList($event)">
+</br-book>
+
+<hr>
+<a [href]="url">website</a> / {{ d | date: 'fullDate' }}
+<hr>
+<!-- <pre>{{ books | json }}</pre> -->

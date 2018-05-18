@@ -1,0 +1,37 @@
+{{ isbn$ | async }}
+
+<form [formGroup]="bookForm" (ngSubmit)="submitForm()">
+  <div class="form-group">
+    <label>ISBN</label>
+    <input type="text" class="form-control" formControlName="isbn">
+    <div class="feedback-red" *ngIf="bookForm.get('isbn').invalid && bookForm.get('isbn').dirty">ISBN ist ungültig</div>
+    <div class="feedback-red" *ngIf="bookForm.get('isbn').hasError('minlength')">
+      - weil sie zu kurz ist, wir brauchen {{ bookForm.get('isbn').getError('minlength').requiredLength }}, 
+      es sind {{ bookForm.get('isbn').getError('minlength').actualLength
+      }}
+    </div>
+    <div class="feedback-red" *ngIf="bookForm.get('isbn').hasError('maxlength')">
+      - weil sie zu lang ist, wir brauchen {{ bookForm.get('isbn').getError('maxlength').requiredLength }}, 
+      es sind {{ bookForm.get('isbn').getError('maxlength').actualLength
+      }}
+    </div>
+  </div>
+  <div class="form-group">
+
+    <label>Titel</label>
+    <input type="text" class="form-control" formControlName="title">
+  </div>
+  <div class="form-group">
+
+    <label>Autor</label>
+    <input type="text" class="form-control" formControlName="author">
+  </div>
+  <div class="form-group">
+    <label>Beschreibung</label>
+    <textarea class="form-control" formControlName="description"></textarea>
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn" [disabled]="bookForm.invalid">Los</button>
+  </div>
+</form>
+<!-- <pre>{{bookForm.value|json}}</pre> -->

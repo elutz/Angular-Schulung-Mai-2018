@@ -1,0 +1,19 @@
+<div class="card mb-4" [ngClass]="{'border-secondary': isOdd, 'border-primary': !isOdd}">
+    <div class="card-body">
+      <img class="img-thumbnail float-right" src="//api.angular.schule/avatar/{{ book.rating }}">
+      <div class="card-title">
+        <h2>
+          {{ book.title }}
+          <span class="badge badge-secondary testing-rating-box">{{ book.rating }}</span>
+        </h2>
+        <p class="text-muted">
+          von <strong>{{ book.author }}</strong>
+        </p>
+      </div>
+      <p>{{ book.description }}</p>
+      <button class="btn btn-secondary mr-1" (click)="rateUp()">+</button>
+      <button class="btn btn-secondary" (click)="rateDown()">-</button>
+
+      <a [routerLink]="['/book', book.isbn]" >Details</a>
+    </div>
+  </div>
